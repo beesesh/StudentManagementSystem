@@ -1,0 +1,54 @@
+﻿@model IEnumerable<StudentManagementSystem.Models.registration>
+
+@{
+    ViewBag.Title = "Register Here";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="text-primary">Register Here</h2>
+        @Html.ActionLink("➕ Create New", "Create", null, new { @class = "btn btn-success" })
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-warning text-center">
+            No registrations available. Click "Create New" to add one.
+        </div>
+    }
+    else
+    {
+        <table class="table table-striped table-hover shadow-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.First().firstname)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().lastname)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().nic)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().telno)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().batch.batch1)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().course.course1)</th>
+                    <th class="text-end">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.firstname)</td>
+                        <td>@Html.DisplayFor(modelItem => item.lastname)</td>
+                        <td>@Html.DisplayFor(modelItem => item.nic)</td>
+                        <td>@Html.DisplayFor(modelItem => item.telno)</td>
+                        <td>@Html.DisplayFor(modelItem => item.batch.batch1)</td>
+                        <td>@Html.DisplayFor(modelItem => item.course.course1)</td>
+                        <td class="text-end">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.id }, new { @class = "btn btn-sm btn-outline-primary me-1" })
+                            @Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "btn btn-sm btn-outline-info me-1" })
+                            @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-sm btn-outline-danger" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

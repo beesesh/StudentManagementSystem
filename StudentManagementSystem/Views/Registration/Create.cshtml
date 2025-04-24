@@ -1,0 +1,68 @@
+﻿@model StudentManagementSystem.Models.registration
+
+@{
+    ViewBag.Title = "Create Registration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="card shadow p-4">
+        <h2 class="text-center text-primary mb-4">Create New Registration</h2>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="mb-3">
+                @Html.Label("First Name", htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.firstname, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter first name" } })
+                @Html.ValidationMessageFor(model => model.firstname, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb-3">
+                @Html.Label("Last Name", htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.lastname, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter last name" } })
+                @Html.ValidationMessageFor(model => model.lastname, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.nic, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.nic, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter NIC" } })
+                @Html.ValidationMessageFor(model => model.nic, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.course_id)
+                @Html.DropDownListFor(model => model.course_id, (SelectList)ViewBag.course_id, "-- Select Course --", new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(model => model.course_id)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.batch_id)
+                @Html.DropDownListFor(model => model.batch_id, (SelectList)ViewBag.batch_id, "-- Select Batch --", new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(model => model.batch_id)
+            </div>
+
+            <div class="mb-3">
+                @Html.Label("Telephone No", htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.telno, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter telephone number" } })
+                @Html.ValidationMessageFor(model => model.telno, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="d-grid gap-2 mt-4">
+                <input type="submit" value="Create Registration" class="btn btn-primary" />
+            </div>
+        }
+
+        <div class="mt-3 text-center">
+            @Html.ActionLink("← Back to Home", "Index", null, new { @class = "btn btn-link" })
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

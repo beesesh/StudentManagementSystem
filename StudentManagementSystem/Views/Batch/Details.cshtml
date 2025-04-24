@@ -1,0 +1,33 @@
+﻿@model StudentManagementSystem.Models.batch
+
+@{
+    ViewBag.Title = "Batch Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="card shadow p-4">
+        <h2 class="text-center text-primary mb-4">Batch Details</h2>
+
+        <dl class="row">
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.batch1)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.batch1)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.year)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.year)
+            </dd>
+        </dl>
+
+        <div class="d-flex justify-content-between mt-4">
+            @Html.ActionLink("Edit", "Edit", new { id = Model.id }, new { @class = "btn btn-secondary" })
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-link" })
+        </div>
+    </div>
+</div>

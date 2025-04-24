@@ -1,0 +1,36 @@
+﻿@model StudentManagementSystem.Models.course
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="card shadow p-4">
+        <h2 class="text-center text-primary mb-4">Course Details</h2>
+
+        <div>
+            <h4 class="mb-3">Course Information</h4>
+            <hr />
+
+            <div class="mb-3">
+                <dt class="form-label">Course Name</dt>
+                <dd class="form-control-plaintext">
+                    @Html.DisplayFor(model => model.course1)
+                </dd>
+            </div>
+
+            <div class="mb-3">
+                <dt class="form-label">Duration</dt>
+                <dd class="form-control-plaintext">
+                    @Html.DisplayFor(model => model.duration)
+                </dd>
+            </div>
+        </div>
+
+        <div class="d-grid mt-3">
+            @Html.ActionLink("Edit", "Edit", new { id = Model.id }, new { @class = "btn btn-warning" }) 
+            @Html.ActionLink("Back to Course List", "Index", null, new { @class = "btn btn-link" })
+        </div>
+    </div>
+</div>

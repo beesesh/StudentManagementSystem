@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="jumbotron text-center bg-light p-5 shadow rounded">
+        <h1 class="display-4 text-primary">Welcome to the School Management System</h1>
+        <p class="lead">Manage students, teachers, courses, batches, and registrations with ease.</p>
+        <hr class="my-4" />
+        <p>Start by exploring the available modules:</p>
+        <a class="btn btn-primary btn-lg me-2" href="@Url.Action("Index", "Registration")">Manage Students</a>
+        <a class="btn btn-success btn-lg me-2" href="@Url.Action("Index", "Teacher")">Manage Teachers</a>
+        <a class="btn btn-info btn-lg" href="@Url.Action("Index", "Course")">Manage Courses</a>
+    </div>
+
+    <div class="row text-center mt-5">
+        <div class="col-md-4 mb-4">
+            <div class="card shadow h-100">
+                <div class="card-body">
+                    <i class="fas fa-user-graduate fa-3x mb-3 text-primary"></i>
+                    <h5 class="card-title">Students</h5>
+                    <p class="card-text">Add, edit, view, and delete student records efficiently.</p>
+                    <a href="@Url.Action("Index", "Registration")" class="btn btn-outline-primary">View Students</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow h-100">
+                <div class="card-body">
+                    <i class="fas fa-chalkboard-teacher fa-3x mb-3 text-success"></i>
+                    <h5 class="card-title">Teachers</h5>
+                    <p class="card-text">Manage teacher profiles and subject assignments.</p>
+                    <a href="@Url.Action("Index", "Teacher")" class="btn btn-outline-success">View Teachers</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow h-100">
+                <div class="card-body">
+                    <i class="fas fa-book fa-3x mb-3 text-info"></i>
+                    <h5 class="card-title">Courses</h5>
+                    <p class="card-text">Handle course details and batch enrollments.</p>
+                    <a href="@Url.Action("Index", "Course")" class="btn btn-outline-info">View Courses</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+x

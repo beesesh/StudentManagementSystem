@@ -1,0 +1,108 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Login";
+}
+
+<style>
+    body {
+        background: linear-gradient(to right, #e3f2fd, #fff);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .login-card {
+        background-color: #ffffff;
+        border-radius: 20px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        padding: 2.5rem;
+        width: 100%;
+        max-width: 420px;
+    }
+
+    .form-label {
+        font-weight: 600;
+    }
+
+    .btn-primary {
+        background-color: #1976d2;
+        border: none;
+    }
+
+        .btn-primary:hover {
+            background-color: #1565c0;
+        }
+
+    .login-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #333;
+    }
+
+    .app-title {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-top: 30px;
+        color: #1565c0;
+        text-shadow: 1px 1px 2px #bbb;
+    }
+
+    .signup-text a {
+        font-weight: 600;
+        color: #1976d2 !important;
+    }
+
+        .signup-text a:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<h2 class="text-center app-title">Student Management System</h2>
+
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="login-card">
+        <h3 class="text-center login-title mb-4">Login to Your Account</h3>
+
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" id="username" name="username" class="form-control" placeholder="Enter your username" required />
+            </div>
+
+            <div class="mb-4 position-relative">
+                <label for="password" class="form-label">Password</label>
+                <div class="input-group">
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" required />
+                    <span class="input-group-text bg-white">
+                        <i class="bi bi-eye-slash" id="togglePassword" style="cursor: pointer;"></i>
+                    </span>
+                </div>
+            </div>
+
+
+            <div class="d-grid mb-3">
+                <button type="submit" class="btn btn-primary btn-lg">Login</button>
+            </div>
+        }
+
+        <div class="text-center signup-text">
+            <p class="mb-0">
+                Don't have an account?
+                @Html.ActionLink("Sign up", "Signup", "Account", new { area = "" }, new { @class = "link-primary" })
+            </p>
+        </div>
+    </div>
+</div>
+<script>
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#password');
+
+    togglePassword.addEventListener('click', function () {
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+
+        this.classList.toggle('bi-eye');
+        this.classList.toggle('bi-eye-slash');
+    });
+</script>

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<StudentManagementSystem.Models.batch>
+
+@{
+    ViewBag.Title = "Batch List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="text-primary">Batches</h2>
+        @Html.ActionLink("➕ Create New Batch", "Create", null, new { @class = "btn btn-success" })
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-warning text-center">
+            No batches available. Click "Create New Batch" to add one.
+        </div>
+    }
+    else
+    {
+        <table class="table table-striped table-hover shadow-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.First().batch1)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().year)</th>
+                    <th class="text-end">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.batch1)</td>
+                        <td>@Html.DisplayFor(modelItem => item.year)</td>
+                        <td class="text-end">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.id }, new { @class = "btn btn-sm btn-outline-primary me-1" })
+                            @Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "btn btn-sm btn-outline-info me-1" })
+                            @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-sm btn-outline-danger" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

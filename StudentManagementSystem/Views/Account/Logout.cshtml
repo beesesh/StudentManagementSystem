@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Logout";
+}
+
+<h2>Logout</h2>
+
+@using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { @id = "logoutForm" }))
+{
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Logout</button>
+}
+
+

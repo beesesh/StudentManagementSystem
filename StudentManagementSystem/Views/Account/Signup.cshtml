@@ -1,0 +1,101 @@
+﻿@model StudentManagementSystem.Models.user
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Sign Up";
+}
+
+<style>
+    .signup-card {
+        background-color: #ffffff;
+        border-radius: 20px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        padding: 2.5rem;
+        width: 100%;
+        max-width: 420px;
+    }
+
+    .form-label {
+        font-weight: 600;
+    }
+
+    .btn-primary {
+        background-color: #1976d2;
+        border: none;
+    }
+
+        .btn-primary:hover {
+            background-color: #1565c0;
+        }
+
+    .signup-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #333;
+    }
+
+    .signup-text a {
+        font-weight: 600;
+        color: #1976d2 !important;
+    }
+
+        .signup-text a:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="signup-card">
+        <h3 class="text-center signup-title mb-4">Create a New Account</h3>
+
+        @Html.Raw(ViewBag.InsertMessage)
+
+        @using (Html.BeginForm("Signup", "Account", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                @Html.TextBoxFor(m => m.username, new { @class = "form-control", placeholder = "Enter your username", required = "required" })
+            </div>
+
+            <div class="mb-4">
+                <label for="password" class="form-label">Password</label>
+                <div class="input-group">
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" required />
+                    <span class="input-group-text bg-white">
+                        <i class="bi bi-eye-slash" id="togglePassword" style="cursor: pointer;"></i>
+                    </span>
+                </div>
+            </div>
+
+            <div class="d-grid mb-3">
+                <button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
+            </div>
+        }
+
+        <div class="text-center signup-text">
+            <p class="mb-0">
+                Already have an account?
+                @Html.ActionLink("Login", "Login", "Account", new { area = "" }, new { @class = "link-primary" })
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Add Bootstrap Icons if not already added -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+<!-- Password toggle script -->
+<script>
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#password');
+
+    togglePassword.addEventListener('click', function () {
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+
+        this.classList.toggle('bi-eye');
+        this.classList.toggle('bi-eye-slash');
+    });
+</script>

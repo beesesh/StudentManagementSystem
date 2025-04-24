@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "About";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="text-center mb-5">
+        <h2 class="text-primary">About Our School Management System</h2>
+        <p class="lead">Learn more about what we do and how we help institutions manage their data efficiently.</p>
+    </div>
+
+    <div class="row text-center">
+        <div class="col-md-4 mb-4">
+            <div class="card shadow h-100 border-0">
+                <div class="card-body">
+                    <i class="fas fa-school fa-3x mb-3 text-primary"></i>
+                    <h5 class="card-title">Our Mission</h5>
+                    <p class="card-text">
+                        To provide a comprehensive and user-friendly platform that simplifies school operations and enhances productivity.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow h-100 border-0">
+                <div class="card-body">
+                    <i class="fas fa-cogs fa-3x mb-3 text-success"></i>
+                    <h5 class="card-title">What We Offer</h5>
+                    <p class="card-text">
+                        Modules for managing students, teachers, courses, registrations, and batches with a secure login system.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow h-100 border-0">
+                <div class="card-body">
+                    <i class="fas fa-users fa-3x mb-3 text-info"></i>
+                    <h5 class="card-title">Who We Serve</h5>
+                    <p class="card-text">
+                        Schools, colleges, and educational institutes seeking to digitize and streamline their academic management processes.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-5 text-center">
+        <h4 class="text-secondary">Want to know more?</h4>
+        <p>Contact us through the <a href="@Url.Action("Contact", "Home")" class="link-primary">Contact Page</a> or reach out via email for support and collaboration.</p>
+    </div>
+</div>

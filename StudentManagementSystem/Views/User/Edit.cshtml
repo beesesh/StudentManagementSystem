@@ -1,0 +1,58 @@
+﻿@model StudentManagementSystem.Models.user
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="card shadow p-4">
+        <h2 class="text-center text-primary mb-4">Edit User</h2>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.id)
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.firstname, htmlAttributes: new { @class = "form-label" })
+                    @Html.EditorFor(model => model.firstname, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter first name" } })
+                    @Html.ValidationMessageFor(model => model.firstname, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.lastname, htmlAttributes: new { @class = "form-label" })
+                    @Html.EditorFor(model => model.lastname, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter last name" } })
+                    @Html.ValidationMessageFor(model => model.lastname, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.username, htmlAttributes: new { @class = "form-label" })
+                    @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter username" } })
+                    @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "form-label" })
+                    @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter password" } })
+                    @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="d-grid mt-3">
+                    <input type="submit" value="Save" class="btn btn-success" />
+                </div>
+            </div>
+        }
+
+        <div class="mt-3 text-center">
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-link" })
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

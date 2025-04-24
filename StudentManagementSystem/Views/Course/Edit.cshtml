@@ -1,0 +1,43 @@
+﻿@model StudentManagementSystem.Models.course
+
+@{
+    ViewBag.Title = "Edit Course";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="card shadow p-4">
+        <h2 class="text-center text-warning mb-4">Edit Course</h2>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.id)
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.course1, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.course1, new { htmlAttributes = new { @class = "form-control", placeholder = "Course name" } })
+                @Html.ValidationMessageFor(model => model.course1, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.duration, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.duration, new { htmlAttributes = new { @class = "form-control", placeholder = "Duration (e.g., 6 months)" } })
+                @Html.ValidationMessageFor(model => model.duration, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="d-grid">
+                <input type="submit" value="Save Changes" class="btn btn-warning" />
+            </div>
+        }
+
+        <div class="mt-3 text-center">
+            @Html.ActionLink("← Back to Course List", "Index", null, new { @class = "btn btn-link" })
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

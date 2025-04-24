@@ -1,0 +1,49 @@
+﻿@model StudentManagementSystem.Models.user
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="card shadow p-4">
+        <h2 class="text-center text-primary mb-4">User Details</h2>
+
+        <h4>User Information</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.firstname)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.firstname)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.lastname)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.lastname)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.username)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.username)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.password)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.password)
+            </dd>
+        </dl>
+
+        <div class="mt-3 text-center">
+            @Html.ActionLink("Edit", "Edit", new { id = Model.id }, new { @class = "btn btn-secondary" }) |
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-link" })
+        </div>
+    </div>
+</div>
